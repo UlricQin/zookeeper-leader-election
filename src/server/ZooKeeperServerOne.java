@@ -19,7 +19,7 @@ public class ZooKeeperServerOne {
 		QuorumPeerConfig qpc = new QuorumPeerConfig(); 
 		
 		try {
-			qpc.parse("/home/posse/Desktop/zookeeper-3.3.1/conf/zoo1.cfg");
+			qpc.parse("conf/zoo1.cfg");
 		} catch (ConfigException e) {
 			e.printStackTrace();
 		}

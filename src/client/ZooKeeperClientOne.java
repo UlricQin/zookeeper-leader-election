@@ -30,21 +30,6 @@ public class ZooKeeperClientOne  implements Watcher {
 		leaderElection();
 		
 		int pause = new Scanner(System.in).nextInt();
-		
-		/*
-		//TESTES
-		String election = "/election";
-		String r = zk.create(election, new byte[0], Ids.OPEN_ACL_UNSAFE,
-				CreateMode.PERSISTENT);
-		System.out.println(r);
-		
-		String path = "/election/n_";
-		path = zk.create(path, new byte[0], Ids.OPEN_ACL_UNSAFE,
-				CreateMode.EPHEMERAL_SEQUENTIAL);
-		System.out.println(path);
-
-		zk.getChildren(election, true);
-		*/
 	}
 
 	/**
@@ -75,20 +60,6 @@ public class ZooKeeperClientOne  implements Watcher {
 		// Watch for changes on "ELECTION/n_j", where j is the smallest sequence
 		// number such that j < i and n_j is a znode in C;
 		List<String> children = zk.getChildren(PATH, false);
-		
-		/*
-		StringTokenizer token = new StringTokenizer(children.get(0), "_");
-		token.nextToken();
-		int i = Integer.parseInt(token.nextToken());
-		
-		for(String s : children){
-			token = new StringTokenizer(s, "_");
-			token.nextToken();
-			int j = Integer.parseInt(token.nextToken());
-			if (i > j)
-				i = j;
-		}
-		*/
 		
 		String tmp = children.get(0);
 		
@@ -142,9 +113,7 @@ public class ZooKeeperClientOne  implements Watcher {
 
 	@Override
 	public void process(WatchedEvent event) {
-		
-		//String eventPath = event.getPath();
-		
+				
 		switch (event.getType()){
 		
 		case NodeChildrenChanged:

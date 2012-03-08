@@ -29,53 +29,7 @@ public class ZooKeeperClientTwo  implements Watcher {
 		// Leader Election
 		leaderElection();
 		
-		
-		/*
-		String election = "/election";
-
-		String r = zk.create(election, new byte[0], Ids.OPEN_ACL_UNSAFE,
-				CreateMode.PERSISTENT);
-		System.out.println(r);
-		
-		String path = "/election/n_";
-		path = zk.create(path, new byte[0], Ids.OPEN_ACL_UNSAFE,
-				CreateMode.EPHEMERAL_SEQUENTIAL);
-		System.out.println(path);
-
-		zk.getChildren(election, true);
-		*/
-		
 		int pause = new Scanner(System.in).nextInt();
-
-		
-		
-		//2.Let C be the children of "ELECTION", and i be the sequence number of z;
-		
-		
-		/*
-
-		opt = new Scanner(System.in).nextInt();
-		
-		Stat s = zk.exists("/teste", false);
-		if ( s == null )
-			System.out.println("znode nao existe\n");
-		else
-			System.out.println("znode existe.\n");
-		*/
-		
-		
-		/*
-		String path = "/teste";
-		if (zk != null) {
-			zk.create(path, new byte[0], Ids.OPEN_ACL_UNSAFE,
-					CreateMode.PERSISTENT);
-		}
-
-		*/
-
-		//System.out.println("criado!!");
-		//System.out.println("session id: " + zk.getSessionId() + "\n");
-
 	}
 
 	/**
@@ -122,18 +76,6 @@ public class ZooKeeperClientTwo  implements Watcher {
 		// syso
 		System.out.println("CLIENT TWO :: Leader is the owner of znode: " + leader);
 		System.out.println("CLIENT ONE :: Leader id: " + s.getEphemeralOwner());
-		
-		/*
-		Let ELECTION be a path of choice of the application. To volunteer to be a leader:
-		1.Create znode z with path "ELECTION/n_" with both SEQUENCE and EPHEMERAL flags;
-		2.Let C be the children of "ELECTION", and i be the sequence number of z;
-		3.Watch for changes on "ELECTION/n_j", where j is the smallest sequence number such that j < i and n_j is a znode in C;
-
-		Upon receiving a notification of znode deletion:
-		1.Let C be the new set of children of ELECTION;
-		2.If z is the smallest node in C, then execute leader procedure;
-		3.Otherwise, watch for changes on "ELECTION/n_j", where j is the smallest sequence number such that j < i and n_j is a znode in C;
-		 */
 	}
 	
 	public void newLeaderElection() throws KeeperException, InterruptedException{
@@ -159,9 +101,7 @@ public class ZooKeeperClientTwo  implements Watcher {
 
 	@Override
 	public void process(WatchedEvent event) {
-		
-		//String eventPath = event.getPath();
-		
+				
 		switch (event.getType()){
 		
 		case NodeChildrenChanged:
@@ -209,14 +149,11 @@ public class ZooKeeperClientTwo  implements Watcher {
 				System.out.println("CLIENT TWO :: Unknown - Deprecated");
 				break;
 			}
-			
 		}
-		
 	}
 
 
 	public static void main (String[] args){
-
 		try {
 			new ZooKeeperClientTwo();
 		} catch (KeeperException e) {
@@ -226,7 +163,6 @@ public class ZooKeeperClientTwo  implements Watcher {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 }
