@@ -5,16 +5,12 @@ To complete my M.S.c in Informatics Engineering at Lisbon University, I was part
 
 To achive my goals, I implemented a leader election service with the help of ZooKeeper, based on one of it recipes ([http://zookeeper.apache.org/doc/trunk/recipes.html](http://zookeeper.apache.org/doc/trunk/recipes.html)).
 
-<hr>
-
 ZooKeeper
 ---------
 
 ZooKeeper is a service for coordinating processes of distributed applications. It is often a part of critical infrastructure and it aims to provide a simple and high performance kernel for building complex coordination primitives.
 
 See also: [Apache ZooKeeper](http://zookeeper.apache.org/)
-
-<hr>
 
 Instructions
 ------------
@@ -29,8 +25,6 @@ Locate the classes `zookeeper.server.ZooKeeperServerOne`, `ZooKeeperServerTwo`, 
 Initialize ZooKeeper servers: `java -cp bin/:lib/log4j-1.2.16.jar:lib/zookeeper-3.3.1.jar zookeeper.server.ZooKeeperServerOne` or `./zkserver`. Note: It is possible to run ZooKeeper with only one server, but if you want you can also start `ZooKeeperServerTwo` and/or `ZooKeeperServerThree`.
 
 That's it. You now have a running ZooKeeper server, ready to receive requests.
-
-<hr>
 
 Contact
 -------
