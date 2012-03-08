@@ -37,4 +37,4 @@ ruiposse [at] gmail [dot] com
 
 <hr>
 
-<small>© Rui Posse 2011.</small>
+###### © Rui Posse 2011. ######
